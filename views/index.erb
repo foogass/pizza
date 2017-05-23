@@ -10,13 +10,20 @@
 			</div>
 			<br />
 			<div>
-				<img src="<%= p.path_to_image %>" class="img-responsive">
+				<img src="<%= p.path_to_image %>" class="img-responsive img-rounded">
 			</div>
 			<div>
 				<%= p.description %>
 			</div>
 			<div>
-				<%= p.price %>
+				Price: <%= p.price %> rub.
+			</div>
+			<div>
+				Size: <%= p.size %> cm.
+			</div>
+
+			<div>
+				<button class="btn btn-sm btn-success" onclick="add_to_cart()">Add to cart</button>
 			</div>
 		</div>
 	<% end %>
