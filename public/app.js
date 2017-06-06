@@ -1,3 +1,5 @@
+
+
 function something()
 {
 	var x = window.localStorage.getItem('aaa');
@@ -17,9 +19,8 @@ function add_to_cart(id)
 	x = x * 1 + 1;
 	window.localStorage.setItem(key, x);
 
-	alert('Items in your cart: ' + total_count());
-
 	update_orders_input();
+	update_orders_button()
 }
 
 function total_count()
@@ -59,4 +60,9 @@ function cart_get_orders()
 	}
 
 	return orders;
+}
+
+function update_orders_button() {
+	var text = 'Cart (' + total_count() + ')';
+	$('#orders_button').val(text);
 }
