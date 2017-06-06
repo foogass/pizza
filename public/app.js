@@ -18,6 +18,8 @@ function add_to_cart(id)
 	window.localStorage.setItem(key, x);
 
 	alert('Items in your cart: ' + total_count());
+
+	update_orders_input();
 }
 
 function total_count()
@@ -28,8 +30,33 @@ function total_count()
 		var key = window.localStorage.key(i);
 		var value = window.localStorage.getItem(key);
 
-		cnt = cnt + value * 1;
+		if (key.indexOf('product_') == 0) {
+			cnt = cnt + value * 1;	
+		}
+		
 	}
 
 	return cnt;
+}
+
+function update_orders_input() {
+	var orders = cart_get_orders();
+	$('#orders_input').val(orders);
+}
+
+function cart_get_orders()
+{
+	var orders = '';
+
+	for (var i = 0; i < window.localStorage.length; i++) {
+		var key = window.localStorage.key(i);
+		var value = window.localStorage.getItem(key);
+
+		if (key.indexOf('product_') == 0) {
+			orders = orders + key + '=' + value + ',';	
+		}
+		
+	}
+
+	return orders;
 }
